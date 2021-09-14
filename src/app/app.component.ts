@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
         email: new FormControl('oranmiyan@gmail.com', [Validators.required, Validators.email]),
       }),
       gender: new FormControl('male'),
-      hobbies: new FormArray([])
+      bestFoods: new FormArray([])
     })
   }
 
@@ -27,6 +27,6 @@ export class AppComponent implements OnInit {
 
   addFood() {
     const control = new FormControl(null, Validators.required);
-    (this.signUpForm.get('hobbies') as FormArray).push(control)
+    (this.signUpForm.get('bestFoods') as FormArray).push(control)
   }
 }

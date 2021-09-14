@@ -11,7 +11,7 @@
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small *ngIf="signUpForm.get('userPersonalData.email').invalid && signUpForm.get('email').touched" id="emailHelp" class="form-text text-danger">Provide Email</small>
+        <small *ngIf="signUpForm.get('userPersonalData.email').invalid && signUpForm.get('userPersonalData.email').touched" id="emailHelp" class="form-text text-danger">Provide Email</small>
       </div>
     </div>
     <div class="form-check">
@@ -25,10 +25,15 @@
     </div>
 
     <p>Best foods</p>
-    <div formArrayName="hobbies">
-      <input type="text" >
-
+    
+    <div formArrayName="bestFoods">
+      <div class="form-group" *ngFor="let food of signUpForm.get('bestFoods')['controls']; let i = index">
+        <input type="text" formControlName="{{i}}" class="form-control">
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary mt-3" type="submit">Submit</button>
+    <button (click)="addFood()" type="button" class="btn btn-dark btn-sm mb-2">Add Food</button>
+
+    <br>
+    <button [disabled]="this.signUpForm.invalid" type="submit" class="btn btn-primary mt-3" type="submit">Submit</button>
   </form>
 </div>
