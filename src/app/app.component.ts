@@ -17,16 +17,21 @@ export class AppComponent implements OnInit {
         email: new FormControl('oranmiyan@gmail.com', [Validators.required, Validators.email]),
       }),
       gender: new FormControl('male'),
-      bestFoods: new FormArray([])
+      bestFoods: new FormArray([new FormControl(null, Validators.required)])
     })
   }
 
   saveForm() {
     console.log(this.signUpForm);
+    this.signUpForm.reset()
   }
 
   addFood() {
     const control = new FormControl(null, Validators.required);
     (this.signUpForm.get('bestFoods') as FormArray).push(control)
+  }
+
+  removeFood(i) {
+    (this.signUpForm.get('bestFoods') as FormArray).removeAt(i)
   }
 }

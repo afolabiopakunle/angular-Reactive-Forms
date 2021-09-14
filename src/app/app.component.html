@@ -29,9 +29,12 @@
     <div formArrayName="bestFoods">
       <div class="form-group" *ngFor="let food of signUpForm.get('bestFoods')['controls']; let i = index">
         <input type="text" formControlName="{{i}}" class="form-control">
+        <div class="btn-group my-2">
+          <button (click)="removeFood(i)" class="btn btn-danger btn-sm mb-2">Remove Food</button>
+          </div>
       </div>
+      <button (click)="addFood()" type="button" class="btn btn-success btn-sm mb-2">Add Food</button>
     </div>
-    <button (click)="addFood()" type="button" class="btn btn-dark btn-sm mb-2">Add Food</button>
 
     <br>
     <button [disabled]="this.signUpForm.invalid" type="submit" class="btn btn-primary mt-3" type="submit">Submit</button>
