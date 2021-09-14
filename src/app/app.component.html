@@ -1,7 +1,7 @@
 <div class="container p-4">
   <h2 class="text-danger">Reactive Forms</h2>
 
-  <form [formGroup]="signUpForm">
+  <form (ngSubmit)="saveForm()" [formGroup]="signUpForm">
     <div class="form-group">
       <label for="username">User name</label>
       <input type="text" formControlName="username" class="form-control" id="username" placeholder="User name">
@@ -10,7 +10,7 @@
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-danger">We'll never share your email with anyone else.</small>
+      <small *ngIf="signUpForm.get('email').invalid && signUpForm.get('email').touched" id="emailHelp" class="form-text text-danger">Provide Email</small>
     </div>
     <div class="form-check">
       <input formControlName="gender" value="male" type="radio" name="gender" class="form-check-input" id="male">
@@ -21,6 +21,6 @@
       <input formControlName="gender" value="female" type="radio" name="gender" class="form-check-input" id="female">
       <label class="form-check-label" for="female">Female</label>
     </div>
-    <button type="submit" class="btn btn-primary mt-3" (click)="saveForm()">Submit</button>
+    <button type="submit" class="btn btn-primary mt-3" type="submit">Submit</button>
   </form>
 </div>
