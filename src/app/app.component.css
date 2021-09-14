@@ -2,3 +2,16 @@ p {
   font-family: Lato;
 }
 
+input.form-control.ng-invalid.ng-touched:focus {
+  box-shadow: none;
+  border-color: none;
+}
+
+input.form-control {
+  background-color: rgb(211, 233, 241);
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid crimson;
+
+}
