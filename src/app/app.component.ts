@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
 
   addFood() {
     const control = new FormControl(null, Validators.required);
-    (this.signUpForm.get('bestFoods') as FormArray).push(control)
+    (this.signUpForm.get('bestFoods') as FormArray).push(control);
+    
   }
 
   removeFood(i) {
